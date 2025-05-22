@@ -15,20 +15,25 @@ export default function NoteProvider({ children }) {
 
   const [notes, setNotes] = useState(initialNotes);
 
+  // Añadir una nueva nota (con validación para evitar IDs duplicados)
   const addNewNote = () => {
+    const newId = Date.now();
     const newNote = {
-      id: Date.now(),
+      id: newId,
       title: "",
       completed: false,
-      isNew: true,
+      isNew: true, // Marca para estilos/comportamiento especial
     };
     setNotes((prevNotes) => [newNote, ...prevNotes]);
+    return newId; // Devuelve el ID para posible uso inmediato
   };
 
+  // Eliminar nota
   const deleteNote = (id) => {
     setNotes((prevNotes) => prevNotes.filter((note) => note.id !== id));
   };
 
+  // Alternar estado completado
   const toggleCompleteNote = (id) => {
     setNotes((prevNotes) =>
       prevNotes.map((note) =>
@@ -37,24 +42,33 @@ export default function NoteProvider({ children }) {
     );
   };
 
+  // Guardar cambios en una nota (con trim() para eliminar espacios)
   const saveNote = (id, newTitle) => {
+    const trimmedTitle = newTitle.trim();
+    if (!trimmedTitle) return; // Evita notas vacías
+
     setNotes((prevNotes) =>
       prevNotes.map((note) =>
-        note.id === id ? { ...note, title: newTitle, isNew: false } : note
+        note.id === id 
+          ? { ...note, title: trimmedTitle, isNew: false } 
+          : note
       )
     );
   };
 
-  const value = {
+  // Datos expuestos por el contexto
+  const contextValue = {
     notes,
     addNewNote,
     deleteNote,
     toggleCompleteNote,
     saveNote,
+    totalNotes: notes.length, // Extra: conteo de notas
+    completedNotes: notes.filter(note => note.completed).length, // Extra: notas completadas
   };
 
   return (
-    <NoteContext.Provider value={value}>
+    <NoteContext.Provider value={contextValue}>
       {children}
     </NoteContext.Provider>
   );

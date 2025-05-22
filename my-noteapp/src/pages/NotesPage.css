@@ -38,3 +38,57 @@
   padding: 1.5rem;
   transition: all 0.3s ease;
 }
+.notes-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.notes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.notes-stats {
+  display: flex;
+  gap: 15px;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.notes-actions {
+  margin-bottom: 20px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px 0;
+  color: #888;
+}
+
+.empty-state p {
+  margin-bottom: 15px;
+}
+
+.add-first-note-btn {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.add-first-note-btn:hover {
+  background: #45a049;
+}
+
+.note-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 15px;
+}
