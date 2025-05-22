@@ -1,0 +1,40 @@
+/* NotesPage.css */
+
+.notes-page {
+  padding: 2rem;
+  background: linear-gradient(to bottom right, #f0f4ff, #ffffff);
+  min-height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.notes-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.notes-header h2 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+}
+
+.empty-message {
+  text-align: center;
+  color: #888;
+  font-size: 1.2rem;
+}
+
+.note-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+.note-list li {
+  background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%);
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}

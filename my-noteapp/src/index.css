@@ -1,0 +1,30 @@
+/* Reset básico */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: aliceblue;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+ul{
+  margin: 0%;
+  padding: 0%;
+  list-style-type: none;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: center;
+  flex: 1;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  justify-content: center;
+}
