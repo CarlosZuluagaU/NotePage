@@ -1,6 +1,7 @@
 import HeaderComponent from "../components/HeaderComponent";
 import { Link } from "react-router-dom";
 import "./HomePage.css"; // Asegúrate de tener este archivo CSS para estilos
+import Footer from "../components/Footer";
 
 function HomePage() {
   return (
@@ -56,6 +57,7 @@ function HomePage() {
           <Link to="/notes" className="primary-button large">Crear mi primera nota</Link>
         </section>
       </div>
+      <Footer />
     </>
   );
 }

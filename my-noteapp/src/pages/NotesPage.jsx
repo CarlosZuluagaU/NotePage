@@ -3,44 +3,66 @@ import { NoteContext } from "../context/note.context";
 import "./NotesPage.css";
 import NoteCard from "../components/NoteCard";
 import AddNoteButton from "../components/AddNoteButton";
+import Footer from "../components/Footer"; // Asegúrate de importar el Footer
 
 function NotesPage() {
   const { notes, addNewNote, totalNotes, completedNotes } = useContext(NoteContext);
 
   return (
+    <>
     <section className="notes-page">
-      <div className="notes-header">
-        <h2>📝 Mis Notas</h2>
-        <div className="notes-stats">
-          <span>Total: {totalNotes}</span>
-          <span>Completadas: {completedNotes}</span>
+      {/* Header con efecto vidrio y estadísticas */}
+      <div className="notes-header glassmorphism">
+        <div className="header-content">
+          <h2>
+            <span role="img" aria-label="notas">📝</span> Mis Notas
+          </h2>
+          <div className="notes-stats">
+            <div className="stat-box">
+              <span className="stat-number">{totalNotes}</span>
+              <span className="stat-label">Total</span>
+            </div>
+            <div className="stat-box completed">
+              <span className="stat-number">{completedNotes}</span>
+              <span className="stat-label">Completadas</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="notes-actions">
-        <AddNoteButton onAdd={addNewNote} />
-      </div>
-
-      {notes.length === 0 ? (
-        <div className="empty-state">
-          <p>No tienes notas aún</p>
-          <button 
-            className="add-first-note-btn" 
-            onClick={addNewNote}
-          >
-            ➕ Crear primera nota
-          </button>
+      {/* Contenedor principal con fondo */}
+      <div className="notes-container">
+        {/* Barra de acciones flotante */}
+        <div className="notes-actions floating-actions">
+          <AddNoteButton onAdd={addNewNote} />
         </div>
-      ) : (
-        <ul className="note-list">
-          {notes.map((note) => (
-            <li key={note.id}>
-              <NoteCard note={note} />
-            </li>
-          ))}
-        </ul>
-      )}
+
+        {/* Estado vacío o lista de notas */}
+        {notes.length === 0 ? (
+          <div className="empty-state glassmorphism">
+            <div className="empty-content">
+              <p>Parece que no tienes ninguna nota aún...</p>
+              <button 
+                className="add-first-note-btn primary-button" 
+                onClick={addNewNote}
+              >
+                <span role="img" aria-label="añadir">➕</span> Crear mi primera nota
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className="notes-grid">
+            {notes.map((note) => (
+              <NoteCard key={note.id} note={note} />
+            ))}
+          </div>
+        )}
+      </div>
+      
     </section>
+     <Footer />
+    </>
+    
   );
 }
 
