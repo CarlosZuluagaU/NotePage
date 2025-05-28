@@ -78,21 +78,25 @@ header {
 
 /* Botones */
 button {
-  width: 100%;
-  padding: 0.75rem;
+  width: auto;                  /* Solo lo necesario */
+  min-width: 120px;             /* Tamaño mínimo legible */
+  max-width: 90vw;              /* Nunca más del 90% del ancho de pantalla */
+  margin: 0.5rem auto 0 auto;   /* Centrado horizontal */
+  display: block;
+  padding: 0.65rem 1.2rem;      /* Padding cómodo para dedo */
   font-size: 1rem;
   border-radius: 6px;
   border: none;
   background: #007bff;
   color: #fff;
-  margin-top: 0.5rem;
   cursor: pointer;
+  box-sizing: border-box;
 }
 
 /* Responsive para pantallas grandes (desktop) */
 @media (min-width: 600px) {
   .app-container {
-    max-width: 100vw;         /* Ocupa todo el ancho de la pantalla */
+    max-width: 100vw;
     min-height: 100vh;
     margin: 0;
     border-radius: 0;
@@ -119,5 +123,12 @@ button {
     gap: 32px;
     margin-top: 32px;
     width: 100%;
+  }
+  button {
+    max-width: 220px;
+    min-width: 120px;
+    font-size: 1rem;
+    margin: 0.5rem 0 0 0;
+    padding: 0.75rem 2rem;
   }
 }

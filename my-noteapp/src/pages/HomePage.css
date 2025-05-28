@@ -217,9 +217,17 @@ h1 {
     flex-direction: column;
     gap: 1rem;
   }
-  
-  .primary-button, .secondary-button {
-    width: 100%;
+
+  .primary-button,
+  .secondary-button {
+    width: 90%;           /* Cambia de 100% a 90% para que no ocupen todo el ancho */
+    max-width: 320px;     /* Limita el ancho máximo en móvil */
+    min-width: 120px;     /* Tamaño mínimo legible */
+    margin: 0 auto;       /* Centrado horizontal */
+    font-size: 1rem;
+    padding: 0.7rem 1rem; /* Padding más compacto */
+    box-sizing: border-box;
     text-align: center;
+    display: block;
   }
 }
